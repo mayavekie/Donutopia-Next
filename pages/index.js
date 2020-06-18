@@ -50,15 +50,15 @@ export default function Home({categories, product}) {
 }
 
 
-export const getStaticPaths = async () => {
-  return {
-      paths: [
-          { params: { id: '1' } },
-          { params: { id: '2' } }
-      ],
-      fallback: true
-  }
-}
+// export const getStaticPaths = async () => {
+//   return {
+//       paths: [
+//           { params: { id: '1' } },
+//           { params: { id: '2' } }
+//       ],
+//       fallback: true
+//   }
+// }
 export const getStaticProps = async () => {
   const request1 = await Axios.get('http://127.0.0.1:8000/api/categories')
   const request2 = await Axios.get('http://127.0.0.1:8000/api/product/1')
