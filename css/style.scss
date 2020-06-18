@@ -1,0 +1,364 @@
+@import "./base/reset";
+@import "./base/fonts";
+@import "./base/variables";
+@import "./base/mixins";
+
+
+body {
+    background: $backgroundCol;
+    height: 100vh;
+    width: 100%;
+    @include font(300, 1rem, $primary-font, normal, 1.2, left, 0);
+    
+}
+
+//HEADER HOME -----------------------------------------------------
+header.header-home {
+    height: 80vh;
+    background-image: url("/images/homepage-header.jpg");
+    background-size: cover;
+    position: relative;
+
+    h1 {
+        position: absolute;
+        color: $titleCol;
+        top: 55%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 15px 50px;
+        @include font(700, 3rem, $primary-font, normal, 1.2, left, 0);
+    }
+
+    button {
+        position: absolute;
+        color: $titleCol;
+        top: 75%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: $titleCol;
+        padding: 15px 50px;
+        @include font(300, 2rem, $primary-font, normal, 1.2, left, 0);
+        border-radius: 20px;
+        border: 3px solid ;
+        box-shadow:  3px 5px $navbarCol ;
+        a {
+            text-decoration: none;
+            color: $lightfontCol;
+
+            &:hover {
+                color: $navbarCol;
+                text-decoration: none;
+            }
+        }
+
+    }
+}
+
+//BODY HOME-------------------------------------------------------
+.home-category {
+    background: pink;
+    @include make-col(3, 0px);
+    height: 40vh;
+    justify-content: center;
+
+    article {
+        width: 100%;
+        border: 2px $lightfontCol solid;
+    ;
+
+        h2 {
+            position: relative;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            @include font(300, 2rem, $primary-font, normal, 1.2, left, 0);
+            color: $titleCol;
+            background: rgba($backgroundCol, 1);
+            text-align: center;
+            padding: 10px 0;
+        }
+            
+    }
+    
+}
+
+.home-product {
+    width: 100%;
+    @include make-col(2, 0px);
+    flex-direction: row;
+    height: 50vh;
+    article {
+        width: 50%;
+        text-align: center;
+        height: 50vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        h2 {
+            color: $titleCol;
+            @include font(400, 3vh, $primary-font, normal, 50px, center, 0);
+            border-radius: 20px;
+            border: 3px solid ;
+            padding: 10px 15px; 
+            
+        }
+
+        h3 {
+            color: $fontCol;
+            @include font(400, 3vh, $primary-font, normal, 50px, center, 0);
+            padding-top: 30px;
+
+
+        }
+
+        div {
+            color: $fontCol;
+            line-height: 20px;
+
+        }
+    }
+}
+
+//ABOUT PAGE -----------------------------------------------------
+
+.about-section {
+    height: auto;
+    width: 100%;
+    color: $fontCol;
+     
+    .about-2, .about-3 {
+        display: flex;
+        p {
+            padding: 20px 40px;
+            text-align: center;
+        }
+        
+    }
+
+    .about-2 {
+        background: white;
+
+    }
+
+    
+
+    .about-1 {
+        text-align: center;
+        padding: 10px 70px 50px 70px;
+    }
+
+    article {
+        width: 100%;
+
+    }
+    aside {
+        width: 40%;
+    }
+    img {
+        width: 60%;
+        height: 50vh;
+        object-fit: cover;
+    }
+
+    h2 {
+        color: $titleCol;
+        @include font(400, 4vh, $primary-font, normal, 50px, center, 0);
+        padding: 20px 0;
+
+    }
+
+}
+//SHOP PAGE -------------------------------------------------------
+
+.shop-product {
+    height: 100vh;
+    padding: 50px 0;
+
+    ul {
+        @include make-col(4, 30px);
+        justify-content: center;
+        li {
+            width: 80%;
+            background: white;
+            box-shadow: inset 0px 0px 20px -3px rgba(235,155,200,0.63);
+            height: 300px;
+            // border: 2px solid none;
+            border-radius: 25px;
+            text-align: center;
+            padding: 20px;
+
+            h2 {
+                @include font(300, 2rem, $primary-font, normal, 1.2, center, 0);
+                color: $titleCol;
+            }
+
+            p {
+
+            }
+        }
+    }
+}
+
+//HEADER PAGES------------------------------------------------------
+header.header-pages {
+    width: 100%;
+    height: 200px;
+    position: relative;
+    text-align: center;
+    // overflow: hidden;
+    // object-fit: contain;
+
+    h1 {
+        color: $titleCol;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: $lightfontCol;
+        padding: 15px 50px;
+        @include font(300, 2rem, $primary-font, normal, 1.2, left, 0);
+        border-radius: 20px;
+        border: 3px solid ;
+    }
+
+}
+
+//NAVBAR ---------------------------------------------
+nav {
+    background: $navbarCol;
+    display: flex;
+    height: 60px;
+    align-items: center;
+    @include font(700, 3vh, $primary-font, normal, 1.8, left, 0);
+
+    .active {
+        color: $titleCol ;
+    }
+    
+
+    section {
+        display: flex;
+        width: 25%;
+        
+        
+        padding-left: 50px;
+        
+        img {
+            width: 40px;
+            
+        }
+
+        p {
+            color: $lightfontCol;
+            padding-left: 20px;
+            
+        }
+    }
+    
+
+    ul {
+        display: flex;
+        width: 50%;
+        justify-content: space-evenly;
+        li {
+            a {
+                color: $lightfontCol;
+                &:hover {
+                    color: $titleCol;
+                    text-decoration: none;
+                }
+            }
+        }
+        
+    }
+
+    ul.nav-profile {
+        width: 25%;
+        display: flex;
+        padding-right: 50px;
+        justify-content: flex-end; ;
+
+        a {
+            color: $lightfontCol;
+            &:hover {
+                text-decoration: none;
+                color: $titleCol;
+            }
+        }
+    }     
+    
+}
+
+//FOOTER --------------------------------------------
+footer {
+    background: $navbarCol;
+
+    .footer-container { 
+        display: flex;
+        aside {
+            display: flex;
+            justify-content: space-evenly ;
+            width: 50%;
+        }
+        
+        
+        article {
+            padding-bottom: 20px;
+            padding-top: 20px;
+        }
+    }
+
+    .maps {
+        width: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+        iFrame {
+            width: 500px;
+            height: 200px;
+            justify-content: center;
+        }
+    }
+    
+    h2 {
+        color: $backgroundCol;
+        @include font(400, 1.2rem, $primary-font, normal, 50px, left, 0)
+        
+    }
+
+    p { 
+        margin-top: 0;
+        color: $lightfontCol;
+        line-height: 23px;;
+    }
+
+    span {
+        color: $lightfontCol;
+        line-height: 23px;;
+
+        a {
+            color: $lightfontCol;
+        }
+    }
+    a {
+        color: $lightfontCol;
+        transition: background .5s  ease-in-out;
+
+        &:hover {
+            color: $titleCol;
+            text-decoration: none;
+        }
+    }
+
+    .footer-social {
+        display: flex;
+        justify-content: center;
+    }
+
+    .social {
+        justify-content: center;
+    }
+}
