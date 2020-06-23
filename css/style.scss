@@ -225,6 +225,165 @@ header.header-pages {
 
 }
 
+//LOGIN ----------------------------------------------
+.login-section {
+    height: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .error {
+        color: $titleCol;
+        font-weight: 700;;
+    }
+    p {
+        color: $navbarCol;
+    }
+    a {
+        text-decoration: underline;
+        color: $navbarCol;
+        padding-bottom: 50px;
+
+        &:hover {
+            text-decoration: wavy;
+            font-weight: 700;
+        }
+    }
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    padding: 50px 0 20px 0;
+    width: 20%;
+
+    .input-form {
+        padding: 7px;
+        padding-left: 15px;
+        border-radius: 20px;
+        margin-bottom: 10px;
+        margin-top: 10px;
+        border: 2px solid #EB9BC8;
+        box-sizing: border-box;
+
+        // &:focus {
+        //     outline-width: 0;
+        // }
+    
+    }
+
+    button {
+        margin: 20px 60px;
+        padding: 7px;
+        border-radius: 20px;
+        margin-bottom: 10px;
+        margin-top: 10px;
+        background: #EB9BC8;
+        border: none ;
+        color: white;
+        font: 100%/1.4 Lato, Arial, sans-serif;
+        font-size: 1rem;
+        cursor: pointer;
+
+        &:hover, &:focus {
+            box-shadow: 0 0.5em 0.5em -0.4em  #04C4D9;
+            transform: translateY(-0.25em);
+            outline-width: 0;
+        
+        }
+    
+    }
+}
+
+//REGISTER -------------------------------
+
+.register-section {
+    height: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    p {
+        color: $navbarCol;
+    }
+    a {
+        text-decoration: underline;
+        color: $navbarCol;
+        padding-bottom: 50px;
+
+        &:hover {
+            text-decoration: wavy;
+            font-weight: 700;
+        }
+    }
+
+    .register-form {
+        padding: 50px 0 20px 0;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items:center;
+
+        button {
+            width: 10%;
+            padding: 10px;
+            border-radius: 20px;
+            background: #EB9BC8;
+            border: none ;
+            color: white;
+            font: 100%/1.4 Lato, Arial, sans-serif;
+            font-size: 1rem;
+            cursor: pointer;
+    
+            &:hover, &:focus {
+                box-shadow: 0 0.5em 0.5em -0.4em  #04C4D9;
+                transform: translateY(-0.25em);
+                outline-width: 0;
+            
+            }
+        
+        }
+    }
+    
+}
+
+.register {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+
+    .register-left {
+        display: flex;
+        flex-direction: column;
+        width: 30%;
+    }
+
+    .register-right {
+        display: flex;
+        flex-direction: column;
+        width: 30%;
+
+    }
+
+    
+
+}
+
+.input-form {
+    padding: 7px;
+    padding-left: 15px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    border: 2px solid #EB9BC8;
+    box-sizing: border-box;
+
+
+}
+
+
+
+
 //NAVBAR ---------------------------------------------
 nav {
     background: $navbarCol;
@@ -233,8 +392,8 @@ nav {
     align-items: center;
     @include font(700, 3vh, $primary-font, normal, 1.8, left, 0);
 
-    .active {
-        color: $titleCol ;
+    .selected {
+        color: $titleCol;
     }
     
 
@@ -277,8 +436,7 @@ nav {
     ul.nav-profile {
         width: 25%;
         display: flex;
-        padding-right: 50px;
-        justify-content: flex-end; ;
+        justify-content: space-evenly;
 
         a {
             color: $lightfontCol;
@@ -287,8 +445,7 @@ nav {
                 color: $titleCol;
             }
         }
-    }     
-    
+    }       
 }
 
 //FOOTER --------------------------------------------

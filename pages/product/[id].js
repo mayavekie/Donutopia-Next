@@ -33,7 +33,7 @@ export const getStaticPaths = async () => {
             { params: { id: '2' } },
             { params: { id: '3' } }
         ],
-        fallback: true
+        fallback: false
     }
 }
 export const getStaticProps = async (ctx) => {
