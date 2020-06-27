@@ -2,21 +2,91 @@ import React, {useState} from 'react'
 import Nav from "../Components/Nav"
 import Footer from "../Components/Footer"
 import Header from "../Components/Header"
-import {isLoggedIn} from "../helpers/helpers"
+import {isNotAuthenticated} from "../helpers/helpers"
 import { parseCookies } from 'nookies'
+import jwt_decode from 'jwt-decode'
+import axios from 'axios'
+import {confirmAlert} from "react-confirm-alert"
+import {logout} from "../helpers/helpers"
 
 
-export default function Profile({}) {
-    // console.log(JSON.parse(data))
+export default function Profile({userData, id}) {
+
+    const handleDelete = (event) => {
+        event.preventDefault()
+        confirmAlert({
+            title:"Wil je je account verwijderen?",
+            message: "Je account wordt definitief verwijdert.",
+            buttons: [ {
+                label: "Ja",
+                className: "error-yes",
+                onClick: () => deleteAccount()
+                
+                
+            },
+        {
+            label: "Nee"
+        }]
+        })
+    }
+
+    const deleteAccount = () => {
+        axios.delete(`https://wdev.be/wdev_maya/eindwerk/api/user/${id}`)
+            .then(response => {
+                console.log(response)
+                logout()
+            })
+            .catch(error => {
+                console.log(error.response)
+            })
+
+    }
     return(
         <>
             <Nav/>
             <Header title="Profile" image="images/profile-header.jpg" alt="profiel-header"/>
-            <div>
-                <section class="profile-section">
-
+            <div className="profile-container">
+                <section className="profile-section">
+                    <article className="profile-data">
+                        <div className="profile-left">
+                            <span>
+                                <label>Voornaam</label>
+                                <p className="user-data">{userData.firstName}</p>
+                            </span>
+                            <span>
+                                <label>E-mail</label>
+                                <p className="user-data">{userData.email}</p>
+                            </span>
+                            <span>
+                                <label>Telefoonnummer</label>
+                                <p className="user-data">{userData.phone}</p>
+                            </span>
+                            <span>
+                                <label>Postcode</label>
+                                <p className="user-data">{userData.postalCode.postalCode}</p>
+                            </span>
+                        </div>
+                        <div className="profile-right">
+                            <span>
+                                <label>Achternaam</label>
+                                <p className="user-data">{userData.lastName}</p>
+                            </span>
+                            <span>
+                                <label>Adres</label>
+                                <p className="user-data">{userData.address}</p>
+                            </span>
+                            <span>
+                                <label>Stad</label>
+                                <p className="user-data">{userData.postalCode.city}</p>
+                            </span>
+                        </div>
+                       
+                        
+                    </article>
+                    <button>Profiel aanpassen</button>
+                    <button className="delete-profile" onClick={handleDelete}> Profiel verwijderen</button>
                 </section>
-                <section class="order-section">
+                <section className="order-section">
 
                 </section>
             </div>
@@ -25,20 +95,27 @@ export default function Profile({}) {
     )
 }
 
+
 export const getServerSideProps = async (ctx) => {
-    isLoggedIn(ctx, "/login")
-    // const response = await axios.get('http://127.0.0.1:8000/api/user/')
-    // const products = response.data['hydra:member']
-    // return {
-    //   props: {
-    //     products
-    //   }
-    // }
-    const cookie= parseCookies(ctx)
-    const data = cookie.userinfo
+    isNotAuthenticated(ctx, "/login")
+
+    const cookies= parseCookies(ctx);    
+
+    const decode = jwt_decode(cookies.jwtToken)
+
+    const id = decode.id
+    // console.log(id)
+
+    const request = await axios.get(`https://wdev.be/wdev_maya/eindwerk/api/user/${id}`)
+    const userData = request.data
+    console.log(userData)
+
     return {
-        props: {
-            data
-        }   
+        props : {
+            userData,
+            id 
+        }
     }
   }
+
+

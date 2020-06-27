@@ -24,15 +24,15 @@ export default function Nav () {
                 <li><Link href="/about"><a title="about">Over</a></Link></li>
                 <li><Link href="/shop"><a title="shop">Shop</a></Link></li>
             </ul>
-            < ul class="nav-profile">
+            < ul className="nav-profile">
                 {loggedin &&
                     <>
                         <li><Link href="/profile"><a title="profiel">Profiel</a></Link></li> 
-                        <li><Link href="/"><a onClick={logout}>Uitloggen</a></Link> </li>
+                        <li><Link href="/"><a onClick={logout}>Afmelden</a></Link> </li>
 
                     </>
                     ||
-                    <li class="nav-loggedin"><Link href="/login"><a title="login">Inloggen</a></Link></li> 
+                    <li className="nav-loggedin"><Link href="/login"><a title="login">Inloggen</a></Link></li> 
 
 
                 }

@@ -9,20 +9,21 @@ export default function Home({categories, product}) {
     <>
 
       <Nav/>
-      <header class="header-home">
+      <header className="header-home">
         <h1>Freshly baked donuts, everyday</h1>
         <button><Link href="/shop"><a title="button-shop">Shop</a></Link></button>
       </header>
-      <section class="home-category">
+      <section className="home-category">
       { categories.map(category => {
                 return (
-                  <article style={{backgroundImage:`url(http://127.0.0.1:8000/images/categories/${category.img})`, backgroundSize:'cover'}}>
+                  
+                  <article style={{backgroundImage:`url(https://wdev.be/wdev_maya/eindwerk/image.php?${category.img}&width=1080&image=/wdev_maya/eindwerk/images/categories/${category.img})`, backgroundSize:'cover'}}>
                     <h2>{category.name}</h2>
                   </article>
                 )})
               }
       </section>
-      <section class="home-product">
+      <section className="home-product">
         { 
           product &&
             <article>
@@ -34,8 +35,8 @@ export default function Home({categories, product}) {
         }
         {
           product.images.length > 0 && 
-          <article class="product-image" style={{backgroundImage:`url(http://127.0.0.1:8000/images/products/${product.images[0].image})`, backgroundSize:'cover'}}>
-
+          <article className="product-image" style={{backgroundImage:`url(https://wdev.be/wdev_maya/eindwerk/image.php?${product.images[0].image}&width=1080&image=/wdev_maya/eindwerk/images/products/${product.images[0].image}
+            )`, backgroundSize:'cover'}}>
           </article>
 
           
@@ -60,8 +61,8 @@ export default function Home({categories, product}) {
 //   }
 // }
 export const getStaticProps = async () => {
-  const request1 = await Axios.get('http://127.0.0.1:8000/api/categories')
-  const request2 = await Axios.get('http://127.0.0.1:8000/api/product/1')
+  const request1 = await Axios.get('https://wdev.be/wdev_maya/eindwerk/api/categories')
+  const request2 = await Axios.get('https://wdev.be/wdev_maya/eindwerk/api/product/1')
   const [categories, product] = await Axios.all([request1, request2])
   return {
     props: {

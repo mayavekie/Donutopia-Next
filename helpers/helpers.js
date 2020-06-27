@@ -1,16 +1,9 @@
 import {parseCookies, destroyCookie} from "nookies"
 import Router from "next/router"
 
-// export const getJWT = (ctx) => {
-//     const cookies = parseCookies(ctx)
-//     const jwt = cookies.jwtToken
 
-//     if (typeof jwt === "undefined"){
-//         return { props: {}}
-//     } else { return{ props: {jwt}}}
-// }
-
-export const isLoggedIn = (ctx, url) => {
+//Als de gebruiker niet is ingelogd
+export const isNotAuthenticated = (ctx, url) => {
     const cookies = parseCookies(ctx)
 
     if (typeof cookies.jwtToken==="undefined"){
@@ -19,12 +12,18 @@ export const isLoggedIn = (ctx, url) => {
     }
 }
 
-export const getJwt = (ctx) => {
+
+//Als de gebruiker is ingelogd
+export const isAuthenticated = (ctx, url) => {
     const cookies = parseCookies(ctx)
-    const jwt = cookies.jwtToken;
-    return jwt;
+
+    if (typeof cookies.jwtToken!=="undefined"){
+        ctx.res.statusCode= 302
+        ctx.res.setHeader('Location',url)
+    }
 }
 
+//Als gebruikt uitlogt
 export const logout= () => {
     destroyCookie(null, "jwtToken")
     Router.push("/")

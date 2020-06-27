@@ -2,6 +2,7 @@
 @import "./base/fonts";
 @import "./base/variables";
 @import "./base/mixins";
+@import "node_modules/react-image-gallery/styles/scss/image-gallery.scss";
 
 
 body {
@@ -171,34 +172,405 @@ header.header-home {
 
 }
 //SHOP PAGE -------------------------------------------------------
+.shop-categories {
+    h2 {
+        @include font(300, 2rem, $primary-font, normal, 1.2, center, 0);
+        color: $titleCol;
+        padding-top: 20px;
+    
+    }
+}
+
+.shop-categories ul {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+
+    li {
+        display: inline;
+    }
+
+    label {
+        display: inline-block;
+        border: 2px solid $titleCol;
+        background: white;
+        color: $titleCol;
+        border-radius: 20px;
+        white-space: nowrap;
+        margin: 3px 3px;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        user-select: none;
+        -webkit-tap-highlight-color: transparent;
+        transition: all .2s;
+        padding: 0.5em 0.8em;
+        cursor: pointer;
+        font-weight: 600;
+    }
+    input[type="checkbox"]:checked + label {
+        background-color:$titleCol;
+        color: white;
+        transition: all .2s;
+    }
+    input[type="checkbox"] {
+        display: absolute;
+        opacity: 0;
+    }
+
+}
 
 .shop-product {
     height: 100vh;
-    padding: 50px 0;
+    padding: 0 50px;;
 
     ul {
         @include make-col(4, 30px);
-        justify-content: center;
         li {
-            width: 80%;
             background: white;
             box-shadow: inset 0px 0px 20px -3px rgba(235,155,200,0.63);
-            height: 300px;
-            // border: 2px solid none;
+            height: auto;
+            border: 2px solid $navbarCol;
             border-radius: 25px;
             text-align: center;
-            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
 
             h2 {
-                @include font(300, 2rem, $primary-font, normal, 1.2, center, 0);
+                @include font(300, 1.5rem, $primary-font, normal, 1.2, center, 0);
                 color: $titleCol;
             }
 
             p {
+                padding: 10px;
+            }
+            .product-price {
+                @include font(700, 1.2rem, $primary-font, normal, 1.2, center, 0);
+            }
+
+            .product-counter {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-evenly;
+                padding-bottom: 10px;
+            }
+
+            .counter {
+                background: white;
+                border: 2px solid $titleCol;
+                border-radius: 50%;
+                padding: 10px;
+                @include font(300, 1rem, $primary-font, normal, 1.2, left, 0);
+                outline-width: 0;
+                cursor: pointer;
+            }
+
+            .counter-add {
+                border: 2px solid $titleCol;
+                border-radius: 25px;
+                background: $titleCol;
+                padding: 10px;
+                color: white;
+                @include font(300, 1rem, $primary-font, normal, 1.2, left, 0);
+                padding-left: 5px;
+                outline-width: 0;
+                cursor: pointer;
+
 
             }
+
+
+            
+        }
+        .image-product {
+            
+            img {
+                width: 100%;
+                object-fit: cover;
+                border-radius: 20px 20px 0 0 ;
+            }
+        }
+        
+    }
+}
+
+//Product -----------------------------------------------------
+.body-product {
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    padding: 50px;
+
+    .image-gallery-slide .image-gallery-image{
+        min-width: 50%;
+        border: 5px solid #EB9BC8;
+        border-radius: 20px;
+    
+    }
+
+    .product-info {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: left;
+        align-items: left;
+        padding-left: 40px;
+
+        
+        h2 {
+            @include font(300, 2rem, $primary-font, normal, 1.2, left, 0);
+            color: $titleCol;
+            padding-bottom: 20px;
+        }
+
+        .p {
+            padding-bottom: 20px;
+        }
+
+        .product-price {
+            @include font(700, 1.2rem, $primary-font, normal, 1.2, left, 0);
+            padding-bottom: 20px;
+        }
+
+        .product-counter {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            width: 60%;
+            
+        }
+
+        .counter {
+            background: white;
+            border: 2px solid $titleCol;
+            border-radius: 25px;
+            padding: 10px;
+            @include font(700, 1rem, $primary-font, normal, 0, left, 0);
+            outline-width: 0;
+            cursor: pointer;
+            color: $titleCol;
+            
+        }
+
+        .quantity-product { 
+            padding: 10px;
+            background: white;
+            border-radius: 25px; 
+        }
+
+        .counter-add {
+            border: 2px solid $titleCol;
+            border-radius: 25px;
+            background: $titleCol;
+            padding: 10px;
+            color: white;
+            @include font(300, 1rem, $primary-font, normal, 1.2, left, 0);
+            padding-left: 5px;
+            outline-width: 0;
+            cursor: pointer;
+
+
         }
     }
+
+
+}
+
+.back {
+    text-decoration: none;
+    padding: 20px;
+    padding-top: 20px;
+    color: $navbarCol
+}
+
+
+//Profiel -----------------------------------------------------
+.profile-container {
+    height: auto;
+    width: 100%;
+
+
+    .profile-section {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 50px 0 20px 0;
+
+        .profile-data {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            align-content: center;
+            width: 100%;
+        }
+        
+
+        .profile-left, .profile-right {
+            width: 30%;
+
+            span {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-content: center;
+                padding: 5px 0;
+                width: 100%;
+
+                label {
+                    padding: 0 7px;
+                }
+    
+                .user-data {
+                    padding: 7px;
+                    padding-left: 15px;
+                    border-radius: 20px;
+                    margin-bottom: 10px;
+                    margin-top: 10px;
+                    border: 2px solid #EB9BC8;
+                    box-sizing: border-box;
+                    background: white;
+                }
+            }
+
+        }
+        
+        button.delete-profile {
+            margin: 20px 60px;
+            padding: 7px;
+            border-radius: 20px;
+            margin-bottom: 10px;
+            margin-top: 10px;
+            background: white;
+            border: 2px solid $titleCol;
+            color: $titleCol;
+            font: 100%/1.4 Lato, Arial, sans-serif;
+            font-size: 1rem;
+            cursor: pointer;
+            width: 10%;
+
+            &:hover, &:focus {
+                background: $navbarCol;
+                color: white;
+                border: none;
+                box-shadow: 0 0.5em 0.5em -0.4em  #EB9BC8;
+                transform: translateY(-0.25em);
+                outline-width: 0;
+            }
+
+        }
+
+        button {
+            margin: 20px 60px;
+            padding: 7px;
+            border-radius: 20px;
+            margin-bottom: 10px;
+            margin-top: 10px;
+            background: #EB9BC8;
+            border: none ;
+            color: white;
+            font: 100%/1.4 Lato, Arial, sans-serif;
+            font-size: 1rem;
+            cursor: pointer;
+            width: 20%;
+
+            &:hover, &:focus {
+                box-shadow: 0 0.5em 0.5em -0.4em  #04C4D9;
+                transform: translateY(-0.25em);
+                outline-width: 0;
+        
+        }
+        }
+    }
+}
+  
+  @keyframes react-confirm-alert-fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+.react-confirm-alert {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+}
+
+.react-confirm-alert-body {
+    background: white;
+    margin: 20px 60px;
+    padding: 7px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    border: 2px solid $navbarCol;
+    color: $navbarCol;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 20vh;
+    width: 100%;
+    box-shadow: 0 5px 75px rgba(235,155,200,0.63);
+
+    h1 {
+
+        @include font(700, 1.2rem, $primary-font, normal, 1.2, left, 0);
+    }
+}
+
+.react-confirm-alert-button-group {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 1.5em;
+    width: 100%;
+}
+.react-confirm-alert-button-group button:first-of-type {
+    background:$navbarCol;
+    padding: 7px;
+    border-radius: 20px;
+    border: 2px solid $navbarCol;
+    color: white;
+    cursor: pointer;
+    width: 40%;
+    outline-width: 0;
+
+}
+
+.react-confirm-alert-button-group button {
+    background: white;
+    padding: 7px;
+    border-radius: 20px;
+    border: 2px solid $navbarCol;
+    color: $navbarCol;
+    cursor: pointer;
+    margin-top: 10px;
+    width: 40%;
+    outline-width: 0;
+
+}
+
+body.react-confirm-alert-body-element {
+    overflow: hidden;
+  }
+
+.react-confirm-alert-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 99;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    animation: react-confirm-alert-fadeIn .2s .2s forwards;
 }
 
 //HEADER PAGES------------------------------------------------------
@@ -227,14 +599,14 @@ header.header-pages {
 
 //LOGIN ----------------------------------------------
 .login-section {
-    height: auto;
+    height: 50vh;
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     .error {
         color: $titleCol;
-        font-weight: 700;;
+        font-weight: 700;
     }
     p {
         color: $navbarCol;
@@ -257,6 +629,12 @@ header.header-pages {
     padding: 50px 0 20px 0;
     width: 20%;
 
+    .css-yk16xz-control {
+        border: 5px solid #EB9BC8;
+
+    }
+
+  
     .input-form {
         padding: 7px;
         padding-left: 15px;
@@ -265,6 +643,7 @@ header.header-pages {
         margin-top: 10px;
         border: 2px solid #EB9BC8;
         box-sizing: border-box;
+        width: 100%;
 
         // &:focus {
         //     outline-width: 0;
@@ -344,7 +723,6 @@ header.header-pages {
         
         }
     }
-    
 }
 
 .register {
