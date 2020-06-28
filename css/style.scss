@@ -9,7 +9,7 @@ body {
     background: $backgroundCol;
     height: 100vh;
     width: 100%;
-    @include font(300, 1rem, $primary-font, normal, 1.2, left, 0);
+    @include font(300, 1.1rem, $primary-font, normal, 1.2, left, 0);
     
 }
 
@@ -27,7 +27,7 @@ header.header-home {
         left: 50%;
         transform: translate(-50%, -50%);
         padding: 15px 50px;
-        @include font(700, 3rem, $primary-font, normal, 1.2, left, 0);
+        @include font(700, 3rem, $primary-font, normal, 1.2, center, 0);
     }
 
     button {
@@ -55,16 +55,18 @@ header.header-home {
     }
 }
 
+
+
 //BODY HOME-------------------------------------------------------
 .home-category {
-    background: pink;
+    background:$fontCol;
     @include make-col(3, 0px);
     height: 40vh;
     justify-content: center;
 
     article {
         width: 100%;
-        border: 2px $lightfontCol solid;
+        border: 0px $lightfontCol solid;
     ;
 
         h2 {
@@ -103,6 +105,7 @@ header.header-home {
             border-radius: 20px;
             border: 3px solid ;
             padding: 10px 15px; 
+            background: white;
             
         }
 
@@ -115,10 +118,14 @@ header.header-home {
         }
 
         div {
-            color: $fontCol;
+            color: $navbarCol;
             line-height: 20px;
 
         }
+    }
+
+    .product-image {
+        width: 100%;
     }
 }
 
@@ -139,15 +146,16 @@ header.header-home {
     }
 
     .about-2 {
-        background: white;
-
+        background: $fontCol;
+        color: white;
+        h2 {
+            color:white;
+        }
     }
-
-    
 
     .about-1 {
         text-align: center;
-        padding: 10px 70px 50px 70px;
+        padding: 20px 90px 70px 90px;
     }
 
     article {
@@ -156,6 +164,7 @@ header.header-home {
     }
     aside {
         width: 40%;
+        height: 50vh;
     }
     img {
         width: 60%;
@@ -171,6 +180,8 @@ header.header-home {
     }
 
 }
+
+
 //SHOP PAGE -------------------------------------------------------
 .shop-categories {
     h2 {
@@ -219,16 +230,26 @@ header.header-home {
 
 }
 
+
+
 .shop-product {
-    height: 100vh;
-    padding: 0 50px;;
+    height: auto;
+    padding: 0 50px;
+
+    h3 {
+        @include font(400, 3vh, $primary-font, normal, 50px, center, 0);
+        text-align: center;
+        padding-bottom: 10px;
+
+    }
+
 
     ul {
         @include make-col(4, 30px);
         li {
             background: white;
             box-shadow: inset 0px 0px 20px -3px rgba(235,155,200,0.63);
-            height: auto;
+            height: 100%;
             border: 2px solid $navbarCol;
             border-radius: 25px;
             text-align: center;
@@ -283,11 +304,14 @@ header.header-home {
             
         }
         .image-product {
+            height: 50%;
+            // object-fit
             
             img {
                 width: 100%;
-                object-fit: cover;
-                border-radius: 20px 20px 0 0 ;
+                // object-fit: fill;
+                border-radius: 25px 25px 0 0 ;
+                height: 100%;
             }
         }
         
@@ -298,7 +322,8 @@ header.header-home {
 .body-product {
     display: flex;
     flex-direction: row;
-    width: 80%;
+    justify-content: center;
+    width: 100%;
     padding: 50px;
 
     .image-gallery-slide .image-gallery-image{
@@ -336,7 +361,7 @@ header.header-home {
             display: flex;
             flex-direction: row;
             justify-content: space-between;
-            width: 60%;
+            width:40%;
             
         }
 
@@ -498,7 +523,7 @@ header.header-home {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 30%;
+    width: 40%;
 }
 
 .react-confirm-alert-body {
@@ -627,7 +652,7 @@ header.header-pages {
     display: flex;
     flex-direction: column;
     padding: 50px 0 20px 0;
-    width: 20%;
+    width: 25%;
 
     .css-yk16xz-control {
         border: 5px solid #EB9BC8;
@@ -673,6 +698,10 @@ header.header-pages {
     
     }
 }
+
+
+
+
 
 //REGISTER -------------------------------
 
@@ -720,7 +749,6 @@ header.header-pages {
                 outline-width: 0;
             
             }
-        
         }
     }
 }
@@ -741,10 +769,7 @@ header.header-pages {
         flex-direction: column;
         width: 30%;
 
-    }
-
-    
-
+    }  
 }
 
 .input-form {
@@ -755,11 +780,7 @@ header.header-pages {
     margin-top: 10px;
     border: 2px solid #EB9BC8;
     box-sizing: border-box;
-
-
 }
-
-
 
 
 //NAVBAR ---------------------------------------------
@@ -794,7 +815,6 @@ nav {
         }
     }
     
-
     ul {
         display: flex;
         width: 50%;
@@ -897,3 +917,464 @@ footer {
         justify-content: center;
     }
 }
+
+//RESPONSIVE DESIGN ------------------------
+
+//footer
+@media only screen and (max-width: 600px) {
+
+    .footer-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align:center;
+        h2 {
+            text-align: center;
+        }
+        
+        aside {
+            display: flex;
+            flex-direction: column;
+        }
+        .maps {
+            width: 80%;
+        }
+
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+  footer {  
+    width: 100%;
+    text-align: center;
+    h2 {
+        text-align: center;
+    }
+    .footer-container { 
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        aside {
+            width: 100%;
+        }   
+    }
+
+    .maps {
+        width: 100%;
+        
+    }
+
+  }
+
+}
+
+@media only screen and (max-width: 1300px) {
+    footer {  
+        width: 100%;
+        text-align: center;
+        h2 {
+            text-align: center;
+        }
+        .footer-container { 
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            aside {
+                width: 100%;
+            }
+            
+            
+        }
+    
+        .maps {
+            width: 100%;
+            
+        }
+    
+      }
+}
+
+//Home
+
+
+@media only screen and (max-width: 1200px) {
+    header.header-home {
+        height: 60vh;
+        h1 {
+            @include font(700, 2.5rem, $primary-font, normal, 1.2, center, 0);
+            padding: 15px 15px;
+            top: 40%;
+        }
+        button {
+            padding: 15px 30px;
+            top: 70%;
+        }
+    }
+    .home-category {
+        @include make-col(2, 0px);
+        height: 80vh;
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    header.header-home {
+        height: 50vh;
+        h1 {
+            @include font(700, 2rem, $primary-font, normal, 1.2, center, 0);
+            padding: 15px 15px;
+            top: 40%;
+            width: 80%;
+        }
+        button {
+            padding: 15px 30px;
+            top: 70%;
+        }
+    }
+    .home-category {
+        @include make-col(2, 0px);
+        height: 80vh;
+        width: 100%;
+    }
+
+    .home-product {
+        @include make-col(1, 0px);
+        height: auto;
+
+    }
+}
+
+@media only screen and (max-width:600px){
+    header.header-home {
+        height: 50vh;
+
+        h1 {
+            @include font(700, 2rem, $primary-font, normal, 1.2, center, 0);
+            padding: 0px 15px;
+            top: 40%;
+        }
+        button {
+            padding: 15px 30px;
+            top: 70%;
+        }
+    }
+
+    .home-category {
+        @include make-col(1, 0px);
+        height: 80vh;
+    }
+
+    .home-product {
+        @include make-col(1, 0px);
+        height: auto;
+
+    }
+}
+
+//responsive register
+
+@media only screen and (max-width: 1000px) {
+    .register-section{
+    .register-form{
+        .register {
+            flex-direction: column;
+            width: 70%;
+
+            .register-left, .register-right, .input-form {
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+        button {
+            width: 50%;
+        }
+        .css-1k2yrc1-container {
+            width:65%;
+        }
+    }
+}
+}
+
+@media only screen and (max-width: 600px) {
+    .register-section {
+
+        .register-form {
+
+            .register {
+                flex-direction: column;
+                width: 90%;
+        
+                .register-left, .register-right, .input-form {
+                    width: 100%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+            }
+            button {
+                width: 50%;
+            }
+            .css-1k2yrc1-container {
+                width: 70%;
+            }
+        }
+    }   
+    
+}
+
+//Responsive login 
+
+@media only screen and (max-width: 1300px) {
+    .login-form {
+        width: 40%;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    .login-form {
+        width: 80%;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .login-form {
+        width: 80%;
+    }
+}
+
+//Responsive about
+
+@media only screen and (max-width: 1200px) {
+
+    aside {
+        height: auto
+    }
+    img {
+        height: auto;
+    }
+    
+
+}
+
+@media only screen and (max-width: 1000px) {
+    .about-2 {
+        flex-direction: column-reverse;
+
+        aside {
+            width: 100%;
+        }
+        img {
+            width: 100%;
+        }
+    }    
+
+    .about-3 {
+        flex-direction: column;
+        aside {
+            width: 100%;
+        }
+        img {
+            width: 100%;
+        }
+    }
+}
+
+
+@media only screen and (max-width: 600px) {
+    .about-2 {
+        flex-direction: column-reverse;
+
+        aside {
+            width: 100%;
+        }
+        img {
+            width: 100%;
+        }
+    }    
+
+    .about-3 {
+        flex-direction: column;
+        aside {
+            width: 100%;
+        }
+        img {
+            width: 100%;
+        }
+    }
+}
+
+//responsive shop
+
+@media only screen and (max-width: 1200px) {
+    .shop-product {
+        ul {
+            @include make-col(3, 30px);
+
+        }
+    }
+}
+@media only screen and (max-width: 1000px) {
+    .shop-product {
+        ul {
+            @include make-col(2, 30px);
+
+        }
+    }
+}
+@media only screen and (max-width: 600px) {
+    .shop-product {
+        ul {
+            @include make-col(1, 30px);
+
+        }
+    }
+}
+
+//responsive product-detail
+
+@media only screen and (max-width: 1200px) { 
+    .profile-container{
+        .profile-section {
+            .profile-data {
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+
+                .profile-left, .profile-right {
+                    width: 60%;
+                }
+
+                
+            }
+            button {
+                width: 40%;
+            }
+            button.delete-profile {
+                width: 30%;
+            }
+        }   
+    }
+    .react-confirm-alert {
+        width: 50%;
+    }
+}
+@media only screen and (max-width: 1000px) {
+    .profile-container{
+        .profile-section {
+            .profile-data {
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+
+                .profile-left, .profile-right {
+                    width: 70%;
+                }
+
+                
+            }
+            button {
+                width: 40%;
+            }
+            button.delete-profile {
+                width: 30%;
+            }
+        }
+    }
+    .react-confirm-alert {
+        width: 70%;
+    }
+}
+@media only screen and (max-width: 600px) {
+    .profile-container{
+        .profile-section {
+            .profile-data {
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+
+                .profile-left, .profile-right {
+                    width: 80%;
+                }
+
+                
+            }
+            button {
+                width: 50%;
+            }
+            button.delete-profile {
+                width: 40%;
+            }
+        }
+    }
+
+    .react-confirm-alert {
+        width: 90%;
+    }
+    
+}
+
+//responsive product-detail
+@media only screen and (max-width: 1200px) {    
+    .body-product {
+        .product-info {
+            .product-counter {
+                width: 70%;
+            }
+
+        }
+    }
+   
+}
+
+@media only screen and (max-width: 1000px) {    
+    .body-product {
+        flex-direction: column-reverse;
+        padding: 30px;
+        .product-info {
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+            padding-left: 0;
+            padding-bottom: 20px;
+
+            .product-counter {
+                width: 30%;
+            }
+
+        }
+    }
+}
+@media only screen and (max-width: 800px) {
+    .body-product {
+        flex-direction: column;
+        padding: 30px;
+        .product-info {
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+            padding-left: 0;
+
+            .product-counter {
+                // jsutify-content: 
+                width: 45%;
+            }
+        }
+    }
+}
+@media only screen and (max-width: 600px) {
+    .body-product {
+        flex-direction: column;
+        padding: 30px;
+        .product-info {
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+            padding-left: 0;
+        }
+    }
+}
+
+

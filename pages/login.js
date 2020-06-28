@@ -3,8 +3,7 @@ import {Formik, Form, Field, ErrorMessage} from 'formik'
 import {object, string} from 'yup'
 import axios from "axios"
 import {setCookie} from "nookies"
-import Header from "../Components/Header"
-import Nav from "../Components/Nav"
+import Layout from "../Components/Layout"
 import Footer from "../Components/Footer"
 import Link from "next/link"
 import {isAuthenticated, getJwt} from "../helpers/helpers"
@@ -16,8 +15,7 @@ export default function Login(){
     const [error, setError] = useState("")
     return(
         <>
-        <Nav/>
-        <Header title="Login" image="images/login-register-header1.jpg" alt="login-header" />
+        <Layout title="Login - Donutopia" description="Log je in om gebruik te kunnen maken van de volledige webshop en begin meteen met smullen." image="images/login-register-header1.jpg"/>
         <Formik 
             validationSchema={
                 object({

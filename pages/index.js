@@ -2,12 +2,14 @@ import Nav from "../Components/Nav"
 import Footer from "../Components/Footer"
 import Link from "next/link"
 import Axios from "axios"
+import HeadHome from "../Components/HeadHome"
+
 
 export default function Home({categories, product}) {
   // console.log(product)
   return (
     <>
-
+      <HeadHome/>
       <Nav/>
       <header className="header-home">
         <h1>Freshly baked donuts, everyday</h1>
@@ -28,16 +30,18 @@ export default function Home({categories, product}) {
           product &&
             <article>
               <h2>Donut in de kijker</h2>
-              <h3>{product.name}</h3>
+        <Link href={`/product/${product.id}`}><a><h3>{product.name}</h3></a></Link>
+              
               <div dangerouslySetInnerHTML= {{__html: product.description}}></div>
               
             </article>
         }
         {
           product.images.length > 0 && 
-          <article className="product-image" style={{backgroundImage:`url(https://wdev.be/wdev_maya/eindwerk/image.php?${product.images[0].image}&width=1080&image=/wdev_maya/eindwerk/images/products/${product.images[0].image}
+          <Link href={`/product/${product.id}`}><a><article className="product-image" style={{backgroundImage:`url(https://wdev.be/wdev_maya/eindwerk/image.php?${product.images[0].image}&width=1080&image=/wdev_maya/eindwerk/images/products/${product.images[0].image}
             )`, backgroundSize:'cover'}}>
-          </article>
+          </article></a>
+          </Link>
 
           
         }

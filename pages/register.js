@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import Header from "../Components/Header"
-import Nav from "../Components/Nav"
 import Footer from "../Components/Footer"
 import { string, object, number, boolean } from "yup";
 import Axios from "axios";
@@ -8,6 +6,7 @@ import { Form, Formik, Field, ErrorMessage } from 'formik'
 import Link from "next/link"
 import { isAuthenticated } from "../helpers/helpers"
 import Select from 'react-select'
+import Layout from "../Components/Layout";
 
 const customStyles = {
     dropdownIndicator: (provided) => ({
@@ -17,7 +16,7 @@ const customStyles = {
 
     container: (provided, state) => ({
         ...provided,
-        width: "20%",
+        width: "30%",
         padding: 10,
         borderRadius: "30px",
         marginBottom: 10,
@@ -35,8 +34,7 @@ export default function Register({ postalCodes }) {
 
     return (
         <>
-            <Nav />
-            <Header title="Register" image="images/login-register-header1.jpg" alt="register-header" />
+        <Layout title="Registratie - Donutopia" description="Registreer je nu bij Donutopia en maak je eerste aankoop in de online donutwinkel." image="images/login-register-header1.jpg"/>
             <Formik
                 validationSchema={
                     object({
@@ -116,7 +114,7 @@ export default function Register({ postalCodes }) {
                                 </Field> */}
                                 {options && <Select options={options} styles={customStyles} onChange={(value) => {
                                     setFieldValue('postalCode',value.value )
-                                }} placeholder={'Stad'}
+                                }} placeholder={'Stad'} className="input-form"
                                 />}
                                 <ErrorMessage name="postalCode" component="p"></ErrorMessage>
                                 <button type="submit" disabled={isSubmitting}>Registreer</button>

@@ -1,10 +1,9 @@
 import React, {useState} from "react"
 import Axios from "axios"
 import Link from "next/link"
-import Header from "../../Components/Header"
-import Nav from "../../Components/Nav"
 import Footer from "../../Components/Footer"
 import ImageGallery from 'react-image-gallery';
+import Layout from "../../Components/Layout"
 
 
 export default ({product}) => {
@@ -18,14 +17,13 @@ export default ({product}) => {
       count > 0 && setCount(count-1)
     }
     const options = product.images.map(image =>{
-        return { original:`https://wdev.be/wdev_maya/eindwerk/image.php?${image.image}&width=1000&height=600&image=/wdev_maya/eindwerk/images/products/${image.image}`, thumbnail: `https://wdev.be/wdev_maya/eindwerk/images/products/${image.image}`}
+        return { original:`https://wdev.be/wdev_maya/eindwerk/image.php?${image.image}&width=600&height=600&cropratio=4:3&image=/wdev_maya/eindwerk/images/products/${image.image}`, thumbnail: `https://wdev.be/wdev_maya/eindwerk/images/products/${image.image}`}
     })
 
     
     return (
         <>
-            <Nav/>
-            <Header title="Shop" image="../images/shop-header.jpg" alt="shop-header" />
+        <Layout title="Donutopia - shop" description="Bestel makkelijk en snel je donuts op Donutopia. Delivery en takeaway, alles is mogelijk." image="../images/shop-header.jpg"/>
             <Link href="/shop">
                 <a className="back">← Terug naar producten</a>
             </Link>

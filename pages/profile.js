@@ -1,13 +1,12 @@
 import React, {useState} from 'react'
-import Nav from "../Components/Nav"
 import Footer from "../Components/Footer"
-import Header from "../Components/Header"
 import {isNotAuthenticated} from "../helpers/helpers"
 import { parseCookies } from 'nookies'
 import jwt_decode from 'jwt-decode'
 import axios from 'axios'
 import {confirmAlert} from "react-confirm-alert"
 import {logout} from "../helpers/helpers"
+import Layout from '../Components/Layout'
 
 
 export default function Profile({userData, id}) {
@@ -39,12 +38,11 @@ export default function Profile({userData, id}) {
             .catch(error => {
                 console.log(error.response)
             })
-
     }
+    
     return(
         <>
-            <Nav/>
-            <Header title="Profile" image="images/profile-header.jpg" alt="profiel-header"/>
+        <Layout title="Profiel - Donutopia" description="Bekijk je profiel op donutopia en neem een kijkje in onze lekkere webshop." image="images/profile-header.jpg"/>
             <div className="profile-container">
                 <section className="profile-section">
                     <article className="profile-data">

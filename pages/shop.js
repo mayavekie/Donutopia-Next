@@ -1,12 +1,18 @@
-import React, {useState} from "react"
+import React, {useState, useContext} from "react"
 import axios from "axios"
 import Link from "next/link"
 import Header from "../Components/Header"
 import Nav from "../Components/Nav"
 import Footer from "../Components/Footer"
+import {CartProvider, CartContext} from "../contexts/CartContext"
+import {Cart} from "../Components/Shop/Cart"
+import {ProductItem} from "../Components/Shop/ProductItem"
+import Layout from "../Components/Layout"
+
 
 
 export default function Products({products, categories}){
+    //count
     const [count, setCount] = useState(0)
     const handleClickAdd = () => {
       setCount(count +1)
@@ -15,20 +21,28 @@ export default function Products({products, categories}){
       count > 0 && setCount(count-1)
     }
 
-     
+    //category filter
+    const [filter, setCategoryFilter] = useState(null)
+    const [product, setProduct] = useState([])
+    
+    const handleCategoryClick = () => {
+      setCategoryFilter(category.id)
+    }
+
 
     return (
         <>
-          <Nav/>
-          <Header title="Shop" image="images/shop-header.jpg" alt="shop-header" />
+        <Layout  title="Shop - Donutopia" description="De lekkerste donutwinkel van België heeft nu ook een online shop waar je naar hartelust zo veel donuts kan kopen als je zelf wilt." image="images/shop-header.jpg"/>
           <section className="shop-categories">
-            <h2>Categorieën</h2>
+          <Link href={`/bestelling`}><a></a></Link>
+
+    <h2>Categorieën</h2>
             <ul>
               { categories.map(category => {
                 return (
                   <li key={category.id}>
                     <input type="checkbox" id={category.name} name={category.name} value={category.id} />
-                    <label for={category.name}>{category.name}</label>
+                    <label for={category.name} >{category.name}</label>
 
                   </li>
                 )
@@ -37,31 +51,18 @@ export default function Products({products, categories}){
             </ul>
           </section>
           <section className="shop-product">
+            <CartProvider>
+            <Cart/>
             <ul >
               { products.map(product => {
                   return (
-                    <li key={product.id}>
-                      { product.images.length >= 0  &&
-                        <div className="image-product">
-                          <Link href={`/product/${product.id}`}><a><img src={`https://wdev.be/wdev_maya/eindwerk/image.php?${product.images[0].image}&width=1000&height=600&cropratio=1&image=/wdev_maya/eindwerk/images/products/${product.images[0].image}
-`} ></img></a></Link>
-                        </div>
-                      }
-
-                      <Link href={`/product/${product.id}`}><a><h2>{product.name}</h2></a></Link>
-                      <p dangerouslySetInnerHTML= {{__html: product.description}}></p>
-                      <p className="product-price">€{product.price[0].price}</p>
-                      <div className="product-counter">
-                        <button className="counter" onClick={handleClickMin}>-</button>
-                        <p>{count}</p>
-                        <button className="counter" onClick={handleClickAdd}>+</button>
-                        <button className="counter-add" >Toevoegen</button>
-                      </div>
-                    </li>
+                    <ProductItem product={product}/>
                   )
                 })
               }
             </ul>
+            </CartProvider>
+            
           </section>
           <Footer/>
         </>
