@@ -39,7 +39,7 @@ export default ({product}) => {
                         <p className="product-price">€{product.price[0].price}</p>
                         <div className="product-counter">
                             <button className="counter" onClick={handleClickMin}>-</button>
-                            <p className="quantity-product">count</p>
+                            <p className="quantity-product">{count}</p>
                             <button className="counter" onClick={handleClickAdd}>+</button>
                             <button className="counter-add">Toevoegen</button>
                         </div>
@@ -58,25 +58,25 @@ export default ({product}) => {
     )
 }
 //Specifieke paden aanmaken per product
-export const getStaticPaths = async () => {
-    const products = await Axios.get("https://wdev.be/wdev_maya/eindwerk/api/products")
-    const productList = products.data['hydra:member']
+// export const getStaticPaths = async () => {
+//     const products = await Axios.get("https://wdev.be/wdev_maya/eindwerk/api/products")
+//     const productList = products.data['hydra:member']
 
-    const list = productList.map( product => (
-        {
-            params: {
-                id: `${product.id}`
-            }
-        }
-    ))
+//     const list = productList.map( product => (
+//         {
+//             params: {
+//                 id: `${product.id}`
+//             }
+//         }
+//     ))
 
-    return {
-        paths: list,
-        fallback: false
-    }
-}
+//     return {
+//         paths: list,
+//         fallback: false
+//     }
+// }
 
-export const getStaticProps = async (ctx) => {
+export const getServerSideProps = async (ctx) => {
     const response = await Axios.get('https://wdev.be/wdev_maya/eindwerk/api/product/' + ctx.params.id)
     const product = response.data
     return {
