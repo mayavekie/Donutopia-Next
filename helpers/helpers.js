@@ -2,7 +2,7 @@ import {parseCookies, destroyCookie} from "nookies"
 import Router from "next/router"
 
 
-//Als de gebruiker niet is ingelogd
+//Als de gebruiker niet is ingelogd, doorverwijzen naar specifieke pagina
 export const isNotAuthenticated = (ctx, url) => {
     const cookies = parseCookies(ctx)
 
@@ -12,8 +12,7 @@ export const isNotAuthenticated = (ctx, url) => {
     }
 }
 
-
-//Als de gebruiker is ingelogd
+//Als de gebruiker is ingelogd, doorverwijzen naar specifieke pagina
 export const isAuthenticated = (ctx, url) => {
     const cookies = parseCookies(ctx)
 
@@ -23,7 +22,7 @@ export const isAuthenticated = (ctx, url) => {
     }
 }
 
-//Als gebruikt uitlogt
+//Als gebruikt uitlogt, cookie wordt vernietigd
 export const logout= () => {
     destroyCookie(null, "jwtToken")
     Router.push("/")

@@ -6,7 +6,6 @@ import HeadHome from "../Components/HeadHome"
 
 
 export default function Home({categories, product}) {
-  // console.log(product)
   return (
     <>
       <HeadHome/>
@@ -55,15 +54,6 @@ export default function Home({categories, product}) {
 }
 
 
-// export const getStaticPaths = async () => {
-//   return {
-//       paths: [
-//           { params: { id: '1' } },
-//           { params: { id: '2' } }
-//       ],
-//       fallback: true
-//   }
-// }
 export const getStaticProps = async () => {
   const request1 = await Axios.get('https://wdev.be/wdev_maya/eindwerk/api/categories')
   const request2 = await Axios.get('https://wdev.be/wdev_maya/eindwerk/api/product/1')

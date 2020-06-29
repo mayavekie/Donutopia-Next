@@ -7,9 +7,7 @@ export default function Products (){
     return (
         <>
         <Layout title="Bestelling" description="Bestel de lekkerste donuts nu online en snel bij Donutopia."image="../images/shop-header.jpg"/>
-        <CartProvider>
-            <Cart/>
-        </CartProvider>
+
         <Footer/>
         </>
     )

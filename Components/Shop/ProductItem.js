@@ -1,23 +1,39 @@
 import React, { useContext, useState } from 'react';
 import Link from 'next/link'
 import { CartContext } from '../../contexts/CartContext'
+import { parseCookies } from 'nookies'
+
 
 export const ProductItem = ({product}) => {
-    //count
+    //Kwantiteit per product
     const [count, setCount] = useState(0)
     const handleClickAdd = () => {
       setCount(count +1)
     }
     const handleClickMin = () => {
-      count > 0 && setCount(count-1)
-    }
+        count > 0 && setCount(count-1)
+    }    
 
-    //Bestelling
+    //Bestelling afhandelen
+    const handleLogIn = () => {
+        const cookies = parseCookies()
+        if (typeof cookies.jwtToken === 'undefined') {
+            window.location = "/login"
+        } 
+        addToCart()
+        setCount(0)
+    }
+    //producten in winkelmand plaatsen
     const [cart, setCart] = useContext(CartContext)
     const addToCart = () => {
         if (count > 0 ){
-      const productincart = { id : product.id, name: product.name, price: product.price[0].price, quantity: count}
-      setCart(currentState => [...currentState, productincart])}
+            const productInCart = { 
+                product : `api/product/${product.id}`, 
+                name: product.name, 
+                priceProduct: product.price[0].price, 
+                quantity: count, 
+            }
+      setCart(currentState => [...currentState, productInCart])}
     }
 
     return(
@@ -33,7 +49,6 @@ export const ProductItem = ({product}) => {
             }
 
             <Link href={`/product/${product.id}`}><a><h2>{product.name}</h2></a></Link>
-            {/* <p dangerouslySetInnerHTML= {{__html: product.description}}></p> */}
 
             { product.price.length > 0 && 
                 <p className="product-price">€{product.price[0].price}</p>
@@ -42,7 +57,7 @@ export const ProductItem = ({product}) => {
             <button className="counter" onClick={handleClickMin} >-</button>
             <p>{count}</p>
             <button className="counter" onClick={handleClickAdd}>+</button>
-            <button className="counter-add" onClick={addToCart} >Toevoegen</button>
+            <button className="counter-add" onClick={handleLogIn} >Toevoegen</button>
             </div>
         </li>
         </>

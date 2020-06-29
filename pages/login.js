@@ -16,7 +16,9 @@ export default function Login(){
     return(
         <>
         <Layout title="Login" description="Log je in om gebruik te kunnen maken van de volledige webshop en begin meteen met smullen." image="images/login-register-header1.jpg"/>
-        <Formik 
+        {/* Formulier met Formik */}
+        <Formik
+        // validatie met yup 
             validationSchema={
                 object({
                     username: string().email("Ongeldig email adres").required("Email is verplicht"),
@@ -24,7 +26,7 @@ export default function Login(){
                 })
             }
             initialValues={{ username: '', password: '' }}
-            
+            //Het posten van de registratie gegevens
             onSubmit={(values)=> {
                 axios.post("https://wdev.be/wdev_maya/eindwerk/api/login_check", values)
                     .then(function (response) {

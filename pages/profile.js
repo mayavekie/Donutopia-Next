@@ -10,7 +10,7 @@ import Layout from '../Components/Layout'
 
 
 export default function Profile({userData, id}) {
-
+    //Pop-up om het profiel te verwijderen, ja of nee?
     const handleDelete = (event) => {
         event.preventDefault()
         confirmAlert({
@@ -26,11 +26,10 @@ export default function Profile({userData, id}) {
             }]
         })
     }
-
+    //Het account verwijderen uit de databank
     const deleteAccount = () => {
         axios.delete(`https://wdev.be/wdev_maya/eindwerk/api/user/${id}`)
             .then(response => {
-                console.log(response)
                 logout()
             })
             .catch(error => {
@@ -40,7 +39,7 @@ export default function Profile({userData, id}) {
     
     return(
         <>
-        <Layout title="Profiel - Donutopia" description="Bekijk je profiel op donutopia en neem een kijkje in onze lekkere webshop." image="images/profile-header.jpg"/>
+        <Layout title="Profiel" description="Bekijk je profiel op donutopia en neem een kijkje in onze lekkere webshop." image="images/profile-header.jpg"/>
             <div className="profile-container">
                 <section className="profile-section">
                     <article className="profile-data">
@@ -83,7 +82,7 @@ export default function Profile({userData, id}) {
                     <button className="delete-profile" onClick={handleDelete}> Profiel verwijderen</button>
                 </section>
                 <section className="order-section">
-
+                    <article className="order"></article>
                 </section>
             </div>
             <Footer/>
@@ -95,6 +94,7 @@ export default function Profile({userData, id}) {
 export const getServerSideProps = async (ctx) => {
     isNotAuthenticated(ctx, "/login")
 
+    //user id uit token halen
     const cookies= parseCookies(ctx);    
     const decode = jwt_decode(cookies.jwtToken)
     const id = decode.id

@@ -12,7 +12,7 @@ import Layout from "../Components/Layout"
 
 
 export default function Products({products, categories}){
-    //count
+    //Kwantiteit per product
     const [count, setCount] = useState(0)
     const handleClickAdd = () => {
       setCount(count +1)
@@ -43,7 +43,6 @@ export default function Products({products, categories}){
                   <li key={category.id}>
                     <input type="checkbox" id={category.name} name={category.name} value={category.id} />
                     <label for={category.name} >{category.name}</label>
-
                   </li>
                 )
               }
@@ -52,15 +51,15 @@ export default function Products({products, categories}){
           </section>
           <section className="shop-product">
             <CartProvider>
-            <Cart/>
-            <ul >
-              { products.map(product => {
-                  return (
-                    <ProductItem product={product}/>
-                  )
-                })
-              }
-            </ul>
+              <Cart/>
+              <ul className="shop-products-list">
+                { products.map(product => {
+                    return (
+                      <ProductItem product={product}/>
+                    )
+                  })
+                }
+              </ul>
             </CartProvider>
             
           </section>

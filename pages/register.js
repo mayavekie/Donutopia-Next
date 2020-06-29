@@ -8,6 +8,7 @@ import { isAuthenticated } from "../helpers/helpers"
 import Select from 'react-select'
 import Layout from "../Components/Layout";
 
+//Styling drop down menu postocdes
 const customStyles = {
     dropdownIndicator: (provided) => ({
         ...provided,
@@ -36,6 +37,7 @@ export default function Register({ postalCodes }) {
         <>
         <Layout title="Registratie" description="Registreer je nu bij Donutopia en maak je eerste aankoop in de online donutwinkel." image="images/login-register-header1.jpg"/>
             <Formik
+            //Validatie met yup
                 validationSchema={
                     object({
                         firstName: string().required("Dit veld is verplicht"),
@@ -59,8 +61,8 @@ export default function Register({ postalCodes }) {
                         postalCode: ''
                     }
                 }
+                //De gegevens posten
                 onSubmit={(values) => {
-                    console.log(values)
                     Axios.post("https://wdev.be/wdev_maya/eindwerk/api/users", values)
                         .then(function (response) {
                             console.log(response, "Je bent werd ingelogd")
@@ -103,15 +105,6 @@ export default function Register({ postalCodes }) {
 
                                     </div>
                                 </article>
-                                {/* <Field as="select" name="postalCode" className="input-form" placeholder="Postcode">
-                                    {
-                                        postalCodes.map(postalCode => {
-
-                                            return (<option value={`/api/postal-code/${postalCode.id}`}>{postalCode.structure}</option>)
-                                        })
-                                    }
-
-                                </Field> */}
                                 {options && <Select options={options} styles={customStyles} onChange={(value) => {
                                     setFieldValue('postalCode',value.value )
                                 }} placeholder={'Stad'} className="input-form"
@@ -133,6 +126,7 @@ export default function Register({ postalCodes }) {
 }
 
 export const getStaticProps = async (ctx) => {
+    //Als gebruiker al is ingelogd
     isAuthenticated(ctx, "/profile")
 
     const request = await Axios.get('https://wdev.be/wdev_maya/eindwerk/api/postal-codes')

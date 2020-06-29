@@ -183,6 +183,43 @@ header.header-home {
 
 
 //SHOP PAGE -------------------------------------------------------
+.cart-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    h2 {
+        @include font(400, 3vh, $primary-font, normal, 50px, center, 0);
+
+    }
+    .p-cart {
+        padding: 10px 10px;
+        font-weight: 700;
+    }
+
+    .product-basket {
+        padding-bottom: 10px;
+    }
+    
+
+
+
+   
+
+    button {
+        border: 2px solid $navbarCol;
+        border-radius: 25px;
+        background: $navbarCol;
+        padding: 10px;
+        color: white;
+        @include font(300, 1rem, $primary-font, normal, 1.2, left, 0);
+        outline-width: 0;
+        cursor: pointer;
+        margin-bottom: 10px;
+    }
+
+}
+
 .shop-categories {
     h2 {
         @include font(300, 2rem, $primary-font, normal, 1.2, center, 0);

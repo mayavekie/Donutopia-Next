@@ -7,8 +7,6 @@ import Layout from "../../Components/Layout"
 
 
 export default ({product}) => {
-    // const options = postalCodes.map((p) => { return { value: `api/postal-code/${p.id}`, label: `${p.structure} ` } })
-
     const [count, setCount] = useState(0)
     const handleClickAdd = () => {
       setCount(count +1)
@@ -16,6 +14,8 @@ export default ({product}) => {
     const handleClickMin = () => {
       count > 0 && setCount(count-1)
     }
+
+    //variabele voor image gallery
     const options = product.images.map(image =>{
         return { original:`https://wdev.be/wdev_maya/eindwerk/image.php?${image.image}&width=600&height=600&cropratio=4:3&image=/wdev_maya/eindwerk/images/products/${image.image}`, 
                 thumbnail: `https://wdev.be/wdev_maya/eindwerk/image.php?${image.image}&width=200&height=200&cropratio=4:3&image=/wdev_maya/eindwerk/images/products/${image.image}`}
@@ -57,7 +57,7 @@ export default ({product}) => {
         </>
     )
 }
-
+//Specifieke paden aanmaken per product
 export const getStaticPaths = async () => {
     const products = await Axios.get("https://wdev.be/wdev_maya/eindwerk/api/products")
     const productList = products.data['hydra:member']
@@ -75,10 +75,10 @@ export const getStaticPaths = async () => {
         fallback: false
     }
 }
+
 export const getStaticProps = async (ctx) => {
     const response = await Axios.get('https://wdev.be/wdev_maya/eindwerk/api/product/' + ctx.params.id)
     const product = response.data
-    console.log(product)
     return {
       props: {
         product
