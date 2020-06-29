@@ -5,7 +5,7 @@ import Layout from "../Components/Layout";
 export default function About(){
     return(
         <>
-          <Layout title="Donutopia - over ons" description="Donutopia, een ambachtelijke donutwinkel. Kom meer te weten over onze liefde voor donuts." image="images/about-header.jpg"/>
+          <Layout title="Over ons" description="Donutopia, een ambachtelijke donutwinkel. Kom meer te weten over onze liefde voor donuts." image="images/about-header.jpg"/>
           <section className="about-section">
               <article className="about-1">
                   <h2>Hoe het begon</h2>

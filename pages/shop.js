@@ -32,7 +32,7 @@ export default function Products({products, categories}){
 
     return (
         <>
-        <Layout  title="Shop - Donutopia" description="De lekkerste donutwinkel van België heeft nu ook een online shop waar je naar hartelust zo veel donuts kan kopen als je zelf wilt." image="images/shop-header.jpg"/>
+        <Layout  title="Shop" description="De lekkerste donutwinkel van België heeft nu ook een online shop waar je naar hartelust zo veel donuts kan kopen als je zelf wilt." image="images/shop-header.jpg"/>
           <section className="shop-categories">
           <Link href={`/bestelling`}><a></a></Link>
 

@@ -17,13 +17,14 @@ export default ({product}) => {
       count > 0 && setCount(count-1)
     }
     const options = product.images.map(image =>{
-        return { original:`https://wdev.be/wdev_maya/eindwerk/image.php?${image.image}&width=600&height=600&cropratio=4:3&image=/wdev_maya/eindwerk/images/products/${image.image}`, thumbnail: `https://wdev.be/wdev_maya/eindwerk/images/products/${image.image}`}
+        return { original:`https://wdev.be/wdev_maya/eindwerk/image.php?${image.image}&width=600&height=600&cropratio=4:3&image=/wdev_maya/eindwerk/images/products/${image.image}`, 
+                thumbnail: `https://wdev.be/wdev_maya/eindwerk/image.php?${image.image}&width=200&height=200&cropratio=4:3&image=/wdev_maya/eindwerk/images/products/${image.image}`}
     })
 
     
     return (
         <>
-        <Layout title="Donutopia - shop" description="Bestel makkelijk en snel je donuts op Donutopia. Delivery en takeaway, alles is mogelijk." image="../images/shop-header.jpg"/>
+        <Layout title="Shop"description={product.description} image="../images/shop-header.jpg"/>
             <Link href="/shop">
                 <a className="back">← Terug naar producten</a>
             </Link>

@@ -6,7 +6,7 @@ import {setCookie} from "nookies"
 import Layout from "../Components/Layout"
 import Footer from "../Components/Footer"
 import Link from "next/link"
-import {isAuthenticated, getJwt} from "../helpers/helpers"
+import {isAuthenticated} from "../helpers/helpers"
 import jwt_decode from 'jwt-decode'
 
 
@@ -15,7 +15,7 @@ export default function Login(){
     const [error, setError] = useState("")
     return(
         <>
-        <Layout title="Login - Donutopia" description="Log je in om gebruik te kunnen maken van de volledige webshop en begin meteen met smullen." image="images/login-register-header1.jpg"/>
+        <Layout title="Login" description="Log je in om gebruik te kunnen maken van de volledige webshop en begin meteen met smullen." image="images/login-register-header1.jpg"/>
         <Formik 
             validationSchema={
                 object({
@@ -24,6 +24,7 @@ export default function Login(){
                 })
             }
             initialValues={{ username: '', password: '' }}
+            
             onSubmit={(values)=> {
                 axios.post("https://wdev.be/wdev_maya/eindwerk/api/login_check", values)
                     .then(function (response) {
@@ -31,12 +32,9 @@ export default function Login(){
                         const jwtDecoded = jwt_decode(jwtToken)
                         setCookie(null, "jwtToken", jwtToken, {
                             maxAge: 60 * 60,
-                            path: "/"
-                            
-                        })
-                        
+                            path: "/"                        
+                        })                       
                         window.location = "/"
-                        console.log(response.data.token)
                     })
                     .catch(function () {
                         setError("Oei, er liep iets fout! Controleer of je email en wachtwoord kloppen. ")

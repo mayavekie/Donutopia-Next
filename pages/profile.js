@@ -19,13 +19,11 @@ export default function Profile({userData, id}) {
             buttons: [ {
                 label: "Ja",
                 className: "error-yes",
-                onClick: () => deleteAccount()
-                
-                
+                onClick: () => deleteAccount()               
             },
-        {
-            label: "Nee"
-        }]
+            {
+                label: "Nee"
+            }]
         })
     }
 
@@ -98,15 +96,11 @@ export const getServerSideProps = async (ctx) => {
     isNotAuthenticated(ctx, "/login")
 
     const cookies= parseCookies(ctx);    
-
     const decode = jwt_decode(cookies.jwtToken)
-
     const id = decode.id
-    // console.log(id)
 
     const request = await axios.get(`https://wdev.be/wdev_maya/eindwerk/api/user/${id}`)
     const userData = request.data
-    console.log(userData)
 
     return {
         props : {

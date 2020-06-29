@@ -34,7 +34,7 @@ export default function Register({ postalCodes }) {
 
     return (
         <>
-        <Layout title="Registratie - Donutopia" description="Registreer je nu bij Donutopia en maak je eerste aankoop in de online donutwinkel." image="images/login-register-header1.jpg"/>
+        <Layout title="Registratie" description="Registreer je nu bij Donutopia en maak je eerste aankoop in de online donutwinkel." image="images/login-register-header1.jpg"/>
             <Formik
                 validationSchema={
                     object({

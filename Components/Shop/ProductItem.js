@@ -34,8 +34,11 @@ export const ProductItem = ({product}) => {
 
             <Link href={`/product/${product.id}`}><a><h2>{product.name}</h2></a></Link>
             {/* <p dangerouslySetInnerHTML= {{__html: product.description}}></p> */}
-            <p className="product-price">€{product.price[0].price}</p>
-            <div className="product-counter">
+
+            { product.price.length > 0 && 
+                <p className="product-price">€{product.price[0].price}</p>
+            }            
+    <div className="product-counter">
             <button className="counter" onClick={handleClickMin} >-</button>
             <p>{count}</p>
             <button className="counter" onClick={handleClickAdd}>+</button>
