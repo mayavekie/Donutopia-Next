@@ -22,13 +22,13 @@ export default function Products({products, categories}){
     }
 
     //category filter
-    const [filter, setCategoryFilter] = useState(null)
-    const [product, setProduct] = useState([])
-    
     const handleCategoryClick = () => {
-      setCategoryFilter(category.id)
-    }
+      categories.map(category =>{
+        if (category.id === product) {
 
+        }
+      })
+    }
 
     return (
         <>

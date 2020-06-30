@@ -28,7 +28,7 @@ export default function Home({categories, product}) {
         { 
           product &&
             <article>
-              <h2>Donut in de kijker</h2>
+              <h2>In de kijker</h2>
         <Link href={`/product/${product.id}`}><a><h3>{product.name}</h3></a></Link>
               
               <div dangerouslySetInnerHTML= {{__html: product.description}}></div>
@@ -56,7 +56,7 @@ export default function Home({categories, product}) {
 
 export const getStaticProps = async () => {
   const request1 = await Axios.get('https://wdev.be/wdev_maya/eindwerk/api/categories')
-  const request2 = await Axios.get('https://wdev.be/wdev_maya/eindwerk/api/product/1')
+  const request2 = await Axios.get('https://wdev.be/wdev_maya/eindwerk/api/product/71')
   const [categories, product] = await Axios.all([request1, request2])
   return {
     props: {
